@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item
-        android:id="@+id/main_item"
-        android:title="@string/calendar_subheader_title">
-        <menu>
+    <group android:checkableBehavior="single">
             <item
                 android:id="@+id/yearViewFragment"
                 android:icon="@drawable/ic_oui_calendar_year"
@@ -25,6 +22,6 @@
                 android:icon="@drawable/ic_oui_calendar_day"
                 android:title="@string/day_title"
                 android:checkable="true"/>
-        </menu>
-    </item>
+    </group>
+
 </menu>

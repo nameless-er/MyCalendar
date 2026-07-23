@@ -8,4 +8,6 @@
     <string name="day_title">Day</string>
 
     <string name="searchbar_hint">What do u want to search for?</string>
+
+    <string name="btnSettings_description">Setting</string>
 </resources>
