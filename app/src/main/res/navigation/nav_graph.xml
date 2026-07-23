@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/monthViewFragment">
+    <fragment
+        android:id="@+id/yearViewFragment"
+        android:name="com.baiyu.mycalendar.fragment.YearViewFragment"
+        android:label="fragment_year_view"
+        tools:layout="@layout/fragment_year_view" />
+    <fragment
+        android:id="@+id/monthViewFragment"
+        android:name="com.baiyu.mycalendar.fragment.MonthViewFragment"
+        android:label="fragment_month_view"
+        tools:layout="@layout/fragment_month_view" />
+    <fragment
+        android:id="@+id/weekViewFragment"
+        android:name="com.baiyu.mycalendar.fragment.WeekViewFragment"
+        android:label="fragment_week_view"
+        tools:layout="@layout/fragment_week_view" />
+    <fragment
+        android:id="@+id/dayViewFragment"
+        android:name="com.baiyu.mycalendar.fragment.DayViewFragment"
+        android:label="fragment_day_view"
+        tools:layout="@layout/fragment_day_view" />
+</navigation>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/main_item"
+        android:title="@string/calendar_subheader_title">
+        <menu>
+            <item
+                android:id="@+id/yearViewFragment"
+                android:icon="@drawable/baseline_home_24"
+                android:title="@string/year_title"
+                android:checkable="true"/>
+            <item
+                android:id="@+id/monthViewFragment"
+                android:icon="@drawable/baseline_settings_24"
+                android:title="@string/month_title"
+                android:checkable="true"/>
+            <item
+                android:id="@+id/weekViewFragment"
+                android:icon="@drawable/baseline_home_24"
+                android:title="@string/week_title"
+                android:checkable="true"/>
+            <item
+                android:id="@+id/dayViewFragment"
+                android:icon="@drawable/baseline_home_24"
+                android:title="@string/day_title"
+                android:checkable="true"/>
+        </menu>
+    </item>
+</menu>
