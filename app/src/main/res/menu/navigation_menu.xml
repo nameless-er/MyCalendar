@@ -7,22 +7,22 @@
         <menu>
             <item
                 android:id="@+id/yearViewFragment"
-                android:icon="@drawable/baseline_home_24"
+                android:icon="@drawable/ic_oui_calendar_year"
                 android:title="@string/year_title"
                 android:checkable="true"/>
             <item
                 android:id="@+id/monthViewFragment"
-                android:icon="@drawable/baseline_settings_24"
+                android:icon="@drawable/ic_oui_calendar_month"
                 android:title="@string/month_title"
                 android:checkable="true"/>
             <item
                 android:id="@+id/weekViewFragment"
-                android:icon="@drawable/baseline_home_24"
+                android:icon="@drawable/ic_oui_calendar_week"
                 android:title="@string/week_title"
                 android:checkable="true"/>
             <item
                 android:id="@+id/dayViewFragment"
-                android:icon="@drawable/baseline_home_24"
+                android:icon="@drawable/ic_oui_calendar_day"
                 android:title="@string/day_title"
                 android:checkable="true"/>
         </menu>

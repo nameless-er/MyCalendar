@@ -6,7 +6,6 @@
     <string name="month_title">Month</string>
     <string name="week_title">Week</string>
     <string name="day_title">Day</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="searchbar_hint">What do u want to search for?</string>
 </resources>

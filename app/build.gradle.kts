@@ -50,4 +50,5 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
+    implementation("io.github.oneuiproject:icons:1.1.0")
 }
