@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <group android:checkableBehavior="single">
-            <item
-                android:id="@+id/yearViewFragment"
-                android:icon="@drawable/ic_oui_calendar_year"
-                android:title="@string/year_title"
-                android:checkable="true"/>
-            <item
-                android:id="@+id/monthViewFragment"
-                android:icon="@drawable/ic_oui_calendar_month"
-                android:title="@string/month_title"
-                android:checkable="true"/>
-            <item
-                android:id="@+id/weekViewFragment"
-                android:icon="@drawable/ic_oui_calendar_week"
-                android:title="@string/week_title"
-                android:checkable="true"/>
-            <item
-                android:id="@+id/dayViewFragment"
-                android:icon="@drawable/ic_oui_calendar_day"
-                android:title="@string/day_title"
-                android:checkable="true"/>
+    <group
+        android:id="@+id/CalenderView"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/yearViewFragment"
+            android:checkable="true"
+            android:icon="@drawable/ic_oui_calendar_year"
+            android:title="@string/year_title" />
+        <item
+            android:id="@+id/monthViewFragment"
+            android:checkable="true"
+            android:icon="@drawable/ic_oui_calendar_month"
+            android:title="@string/month_title" />
+        <item
+            android:id="@+id/weekViewFragment"
+            android:checkable="true"
+            android:icon="@drawable/ic_oui_calendar_week"
+            android:title="@string/week_title" />
+        <item
+            android:id="@+id/dayViewFragment"
+            android:checkable="true"
+            android:icon="@drawable/ic_oui_calendar_day"
+            android:title="@string/day_title" />
     </group>
-
 </menu>

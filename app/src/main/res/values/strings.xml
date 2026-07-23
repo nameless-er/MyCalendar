@@ -1,16 +1,22 @@
 <resources>
     <string name="app_name"></string>
 
+    <!-- Navigation Titles -->
     <string name="calendar_subheader_title">calendar</string>
     <string name="year_title">Year</string>
     <string name="month_title">Month</string>
     <string name="week_title">Week</string>
     <string name="day_title">Day</string>
 
+    <!-- Hints -->
     <string name="searchbar_hint">What do u want to search for?</string>
 
+    <!-- Button Descriptions -->
     <string name="btnSettings_description">Setting</string>
     <string name="title_activity_settings">SettingsActivity</string>
+
+    <!-- Settings Toolbar -->
+    <string name="settings_toolbar_title">Calendar Settings</string>
 
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>
