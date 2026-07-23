@@ -1,5 +1,6 @@
 package com.baiyu.mycalendar.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,19 +14,24 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.baiyu.mycalendar.R;
 import com.baiyu.mycalendar.databinding.ActivityMainBinding;
+import com.baiyu.mycalendar.databinding.NavHeaderBinding;
+import com.google.android.material.button.MaterialButton;
 
 public class MainActivity extends AppCompatActivity {
-    private ActivityMainBinding binding;
+    private ActivityMainBinding mainBinding;
+    private NavHeaderBinding navHeaderBinding;
     private NavController navController;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //binding
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        mainBinding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(mainBinding.getRoot());
+        navHeaderBinding = NavHeaderBinding.bind(mainBinding.navigationView.getHeaderView(0));
         //open drawer
-        binding.toolbar.setNavigationOnClickListener(v -> {
-            binding.drawerLayout.openDrawer(GravityCompat.START);
+        mainBinding.toolbar.setNavigationOnClickListener(v -> {
+            mainBinding.drawerLayout.openDrawer(GravityCompat.START);
         });
 
         /*binding.toolbar.setOnMenuItemClickListener(item -> {
@@ -34,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         })*/
 
         //set appBar padding
-        ViewCompat.setOnApplyWindowInsetsListener(binding.appBarLayout, (view, insets) -> {
+        ViewCompat.setOnApplyWindowInsetsListener(mainBinding.appBarLayout, (view, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
 
             view.setPadding(
@@ -55,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         navController =
                 navHostFragment.getNavController();
         //set navigation item select listener
-        binding.navigationView.setNavigationItemSelectedListener(item -> {
+        mainBinding.navigationView.setNavigationItemSelectedListener(item -> {
 
             boolean handled = NavigationUI
                     .onNavDestinationSelected(
@@ -64,10 +70,15 @@ public class MainActivity extends AppCompatActivity {
                     );
             //closer drawer
             if (handled) {
-                binding.drawerLayout.closeDrawer(GravityCompat.START);
+                mainBinding.drawerLayout.closeDrawer(GravityCompat.START);
             }
 
             return handled;
+        });
+        //set settings bottom onclick listener
+        navHeaderBinding.settingsBtn.setOnClickListener(button -> {
+            Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+            startActivity(intent);
         });
     }
 }
