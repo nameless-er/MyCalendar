@@ -1,4 +1,4 @@
-package com.baiyu.mycalendar.fragment;
+package com.baiyu.mycalendar.ui.week;
 
 import androidx.lifecycle.ViewModelProvider;
 

@@ -1,4 +1,4 @@
-package com.baiyu.mycalendar.fragment;
+package com.baiyu.mycalendar.ui.year;
 
 import androidx.lifecycle.ViewModelProvider;
 
@@ -14,24 +14,24 @@ import android.view.ViewGroup;
 
 import com.baiyu.mycalendar.R;
 
-public class MonthViewFragment extends Fragment {
+public class YearViewFragment extends Fragment {
 
-    private MonthViewViewModel mViewModel;
+    private YearViewViewModel mViewModel;
 
-    public static MonthViewFragment newInstance() {
-        return new MonthViewFragment();
+    public static YearViewFragment newInstance() {
+        return new YearViewFragment();
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_month_view, container, false);
+        return inflater.inflate(R.layout.fragment_year_view, container, false);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(MonthViewViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(YearViewViewModel.class);
         // TODO: Use the ViewModel
     }
 

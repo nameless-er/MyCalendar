@@ -1,4 +1,4 @@
-package com.baiyu.mycalendar.activity;
+package com.baiyu.mycalendar.ui.settings;
 
 import android.os.Bundle;
 

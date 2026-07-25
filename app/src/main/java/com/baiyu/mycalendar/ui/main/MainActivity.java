@@ -1,4 +1,4 @@
-package com.baiyu.mycalendar.activity;
+package com.baiyu.mycalendar.ui.main;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +15,7 @@ import androidx.navigation.ui.NavigationUI;
 import com.baiyu.mycalendar.R;
 import com.baiyu.mycalendar.databinding.ActivityMainBinding;
 import com.baiyu.mycalendar.databinding.NavHeaderBinding;
-import com.google.android.material.button.MaterialButton;
+import com.baiyu.mycalendar.ui.settings.SettingsActivity;
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding mainBinding;
