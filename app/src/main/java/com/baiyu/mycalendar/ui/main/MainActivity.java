@@ -8,6 +8,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.GravityCompat;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
@@ -22,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
     private NavHeaderBinding navHeaderBinding;
     private NavController navController;
 
+    private MainViewModel mainViewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
         mainBinding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(mainBinding.getRoot());
         navHeaderBinding = NavHeaderBinding.bind(mainBinding.navigationView.getHeaderView(0));
+        //instantiate MainViewModel
+        mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
         //open drawer
         mainBinding.toolbar.setNavigationOnClickListener(v -> {
             mainBinding.drawerLayout.openDrawer(GravityCompat.START);
@@ -39,7 +44,17 @@ public class MainActivity extends AppCompatActivity {
             return item.getItemId() == R.id.account;
         })*/
 
-        //set appBar padding
+        setAppBarPadding();;
+        setNavigation();
+
+        //set settings bottom onclick listener
+        navHeaderBinding.settingsBtn.setOnClickListener(button -> {
+            Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+            startActivity(intent);
+        });
+    }
+
+    public void setAppBarPadding() {
         ViewCompat.setOnApplyWindowInsetsListener(mainBinding.appBarLayout, (view, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
 
@@ -52,6 +67,9 @@ public class MainActivity extends AppCompatActivity {
 
             return insets;
         });
+    }
+
+    public void setNavigation(){
         //cast to NavHostFragment
         NavHostFragment navHostFragment =
                 (NavHostFragment) getSupportFragmentManager()
@@ -74,11 +92,6 @@ public class MainActivity extends AppCompatActivity {
             }
 
             return handled;
-        });
-        //set settings bottom onclick listener
-        navHeaderBinding.settingsBtn.setOnClickListener(button -> {
-            Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
-            startActivity(intent);
         });
     }
 }

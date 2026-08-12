@@ -9,16 +9,19 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.baiyu.mycalendar.databinding.FragmentMonthViewBinding;
+import com.baiyu.mycalendar.ui.main.MainViewModel;
+
+import java.time.format.TextStyle;
+import java.util.Locale;
 
 public class MonthViewFragment extends Fragment {
 
     private FragmentMonthViewBinding binding;
-    private MonthViewViewModel mViewModel;
-    private MonthViewAdapter adapter;
-
+    private MainViewModel mainViewModel;
+    private MonthViewViewModel monthViewViewModel;
+    private MonthPageAdapter adapter;
     public static MonthViewFragment newInstance() {
         return new MonthViewFragment();
     }
@@ -32,16 +35,20 @@ public class MonthViewFragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated(@NonNull View view,
-                              @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(MonthViewViewModel.class);
-        // TODO: Use the ViewModel
-        adapter = new MonthViewAdapter();
-        binding.datesRv.setLayoutManager(new GridLayoutManager(requireContext(), 7));
-        binding.datesRv.setAdapter(adapter);
-        //set the observer of dayCells
-        mViewModel.getDayCells().observe(getViewLifecycleOwner(), newDayCells -> {adapter.submitList(newDayCells);});
+        //set ViewModel
+        mainViewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
+        monthViewViewModel = new ViewModelProvider(this).get(MonthViewViewModel.class);
+        //set adapter with a listener overriding onDayCellClick() to set the selected date in mainViewModel
+
+        //set observers
+
+
+        monthViewViewModel.getDisplayedMonth().observe(getViewLifecycleOwner(), newMonth -> {
+            String month = newMonth.getMonth().getDisplayName(TextStyle.FULL, Locale.getDefault());
+            binding.textView.setText(month);
+        });
     }
 
     @Override
@@ -49,5 +56,4 @@ public class MonthViewFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
-
 }

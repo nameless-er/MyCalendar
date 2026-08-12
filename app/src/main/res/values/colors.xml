@@ -2,4 +2,6 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="day_displayed_month_overlay">#20F5F5F5</color>
+    <color name="day_not_displayed_month_overlay">#10F5F5F5</color>
 </resources>
