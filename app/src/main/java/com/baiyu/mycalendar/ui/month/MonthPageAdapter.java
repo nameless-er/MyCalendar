@@ -17,7 +17,7 @@ import com.baiyu.mycalendar.model.DayCell;
 public class MonthPageAdapter extends ListAdapter<DayCell, MonthPageAdapter.DayCellViewHolder> {
     //the list is in ListAdapter, use getItem()
     //the setData() is in ListAdapter namely submitList()
-    private final OnDayCellClickLitsener listener;
+    private final OnDayCellClickListener listener;
     private final DayCellsProvider provider;
     private static final DiffUtil.ItemCallback<DayCell> DIFF_CALLBACK = new DiffUtil.ItemCallback<DayCell>() {
         @Override
@@ -32,7 +32,7 @@ public class MonthPageAdapter extends ListAdapter<DayCell, MonthPageAdapter.DayC
             return oldItem.equals(newItem);
         }
     };
-    public MonthPageAdapter(OnDayCellClickLitsener litsener, DayCellsProvider provider) {
+    public MonthPageAdapter(OnDayCellClickListener litsener, DayCellsProvider provider) {
         super(DIFF_CALLBACK);
         this.listener = litsener;
         this.provider = provider;

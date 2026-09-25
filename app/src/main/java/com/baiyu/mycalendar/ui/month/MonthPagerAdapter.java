@@ -18,12 +18,12 @@ import java.util.Map;
 
 public class MonthPagerAdapter extends RecyclerView.Adapter<MonthPagerAdapter.PageViewHolder>{
     //listener and provider go from MonthViewFragment to MonthPagerAdapter then to MonthPageAdapter
-    private final OnDayCellClickLitsener listener;
+    private final OnDayCellClickListener listener;
     private final DayCellsProvider provider;
     private final Map<YearMonth, List<DayCell>> dayCellsByMonth = new HashMap<>(); //store dayCells for each month
     private final Map<YearMonth, MonthPageAdapter> adaptersByMonth = new HashMap<>(); //store adapter for each month
 
-    public MonthPagerAdapter(OnDayCellClickLitsener listener, DayCellsProvider provider) {
+    public MonthPagerAdapter(OnDayCellClickListener listener, DayCellsProvider provider) {
         this.listener = listener;
         this.provider = provider;
     }
