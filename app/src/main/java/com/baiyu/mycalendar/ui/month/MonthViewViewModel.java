@@ -15,24 +15,17 @@ public class MonthViewViewModel extends ViewModel {
     // TODO: Implement the ViewModel
     // The month currently displayed
     private final MutableLiveData<YearMonth> displayedMonth = new MutableLiveData<>();
-    private final MutableLiveData<LocalDate> selectedDate = new MutableLiveData<>(); //observes selectedDate in MainViewModel
 
     public MutableLiveData<YearMonth> getDisplayedMonth() {
         return displayedMonth;
     }
 
-    public MutableLiveData<LocalDate> getSelectedDate() {
-        return selectedDate;
-    }
-
     public MonthViewViewModel() {
         displayedMonth.setValue(YearMonth.now());
-        selectedDate.setValue(LocalDate.now());
-        generateDayCells(YearMonth.now());
     }
 
     //generate daycells based on a month
-    public List<DayCell> generateDayCells(YearMonth month) {
+    public List<DayCell> generateDayCells(YearMonth month, LocalDate selectedDate) {
         DayOfWeek startWeekDay = month.atDay(1).getDayOfWeek();
         //check whether to create 35 cells or 42 cells
         int requiredCells = startWeekDay.getValue() + month.lengthOfMonth() - 1;
@@ -45,7 +38,7 @@ public class MonthViewViewModel extends ViewModel {
             LocalDate date = firstDayCell.plusDays(i);
             boolean isDisplayedMonth = YearMonth.from(date).equals(month);
             boolean isToday = date.equals(today);
-            boolean isSelected = date.equals(selectedDate.getValue());
+            boolean isSelected = date.equals(selectedDate);
             dayCells.add(new DayCell(date, isToday, isDisplayedMonth, isSelected));
         }
         return dayCells;

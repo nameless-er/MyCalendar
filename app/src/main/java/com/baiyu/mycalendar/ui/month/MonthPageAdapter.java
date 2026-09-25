@@ -57,7 +57,7 @@ public class MonthPageAdapter extends ListAdapter<DayCell, MonthPageAdapter.DayC
         //change the selected date
         holder.itemView.setOnClickListener(v -> { listener.onDayCellClick(dayData);
         });
-        //must has else to update the view holder
+        //must have else to update the view holder
         if (dayData.isDisplayedMonth()) {
             holder.itemView.setBackgroundResource(R.drawable.background_daycell_displayed_month);
             holder.binding.DayTv.setAlpha(1);

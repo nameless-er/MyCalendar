@@ -50,7 +50,7 @@ public class MonthViewFragment extends Fragment {
         DayCellsProvider provider = new DayCellsProvider() {
             @Override
             public List<DayCell> generateDayCells(YearMonth month) {
-                return monthViewViewModel.generateDayCells(month);
+                return monthViewViewModel.generateDayCells(month, mainViewModel.getSelectedDate().getValue());
             }
 
             @Override
@@ -76,7 +76,10 @@ public class MonthViewFragment extends Fragment {
                 }
         );
         //set observers
-        mainViewModel.getSelectedDate().observe(getViewLifecycleOwner(), newDate -> pagerAdapter.updateSelectedDate(newDate));
+        mainViewModel.getSelectedDate().observe(getViewLifecycleOwner(), newDate ->
+        {
+            pagerAdapter.updateSelectedDate(newDate);
+        });
         monthViewViewModel.getDisplayedMonth().observe(getViewLifecycleOwner(), newMonth -> {
             String month = newMonth.getMonth().getDisplayName(TextStyle.FULL, Locale.getDefault());
             binding.textView.setText(month);
