@@ -1,6 +1,5 @@
 package com.baiyu.mycalendar.ui.month;
 
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.baiyu.mycalendar.model.DayCell;
@@ -14,14 +13,9 @@ import java.util.List;
 public class MonthViewViewModel extends ViewModel {
     // TODO: Implement the ViewModel
     // The month currently displayed
-    private final MutableLiveData<YearMonth> displayedMonth = new MutableLiveData<>();
 
-    public MutableLiveData<YearMonth> getDisplayedMonth() {
-        return displayedMonth;
-    }
 
     public MonthViewViewModel() {
-        displayedMonth.setValue(YearMonth.now());
     }
 
     //generate daycells based on a month

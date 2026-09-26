@@ -71,7 +71,7 @@ public class MonthViewFragment extends Fragment {
                     public void onPageSelected(int position) {
                         super.onPageSelected(position);
                         YearMonth month = YearMonth.now().plusMonths(position - 1000);
-                        monthViewViewModel.getDisplayedMonth().setValue(month);
+                        mainViewModel.getDisplayedMonth().setValue(month);
                     }
                 }
         );
@@ -80,7 +80,7 @@ public class MonthViewFragment extends Fragment {
         {
             pagerAdapter.updateSelectedDate(newDate);
         });
-        monthViewViewModel.getDisplayedMonth().observe(getViewLifecycleOwner(), newMonth -> {
+        mainViewModel.getDisplayedMonth().observe(getViewLifecycleOwner(), newMonth -> {
             String month = newMonth.getMonth().getDisplayName(TextStyle.FULL, Locale.getDefault());
             binding.textView.setText(month);
         });
