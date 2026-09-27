@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+//for month_vp2
 public class MonthPagerAdapter extends RecyclerView.Adapter<MonthPagerAdapter.PageViewHolder>{
     //listener and provider go from MonthViewFragment to MonthPagerAdapter then to MonthPageAdapter
     private final OnDayCellClickListener listener;
@@ -30,7 +31,7 @@ public class MonthPagerAdapter extends RecyclerView.Adapter<MonthPagerAdapter.Pa
 
     @NonNull
     @Override
-    public MonthPagerAdapter.PageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public PageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         ItemMonthPageBinding binding = ItemMonthPageBinding.inflate(
                 LayoutInflater.from(parent.getContext()),
                 parent,
@@ -40,7 +41,7 @@ public class MonthPagerAdapter extends RecyclerView.Adapter<MonthPagerAdapter.Pa
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MonthPagerAdapter.PageViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull PageViewHolder holder, int position) {
         //get month, the position it set from 1000
         YearMonth month = YearMonth.now().plusMonths(position - 1000);
         holder.setMonth(month);
@@ -89,7 +90,7 @@ public class MonthPagerAdapter extends RecyclerView.Adapter<MonthPagerAdapter.Pa
         }
     }
 
-    public void disableRvAnimation(@NonNull MonthPagerAdapter.PageViewHolder holder){
+    public void disableRvAnimation(@NonNull PageViewHolder holder){
         RecyclerView.ItemAnimator animator = holder.binding.datesRv.getItemAnimator();
         if (animator instanceof androidx.recyclerview.widget.SimpleItemAnimator) {
             ((androidx.recyclerview.widget.SimpleItemAnimator) animator).setSupportsChangeAnimations(false);

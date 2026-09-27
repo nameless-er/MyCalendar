@@ -19,9 +19,4 @@
         android:name="com.baiyu.mycalendar.ui.week.WeekViewFragment"
         android:label="fragment_week_view"
         tools:layout="@layout/fragment_week_view" />
-    <fragment
-        android:id="@+id/dayViewFragment"
-        android:name="com.baiyu.mycalendar.ui.day.DayViewFragment"
-        android:label="fragment_day_view"
-        tools:layout="@layout/fragment_day_view" />
 </navigation>

@@ -1,4 +1,4 @@
-package com.baiyu.mycalendar.ui.month;
+package com.baiyu.mycalendar.ui.week;
 
 import android.content.res.ColorStateList;
 import android.view.LayoutInflater;
@@ -15,11 +15,10 @@ import com.baiyu.mycalendar.databinding.ItemDaycellBinding;
 import com.baiyu.mycalendar.model.DayCell;
 
 //for dates_rv
-public class MonthPageAdapter extends ListAdapter<DayCell, MonthPageAdapter.DayCellViewHolder> {
-    //the list is in ListAdapter, use getItem()
-    //the setData() is in ListAdapter namely submitList()
+public class WeekPageAdapter extends ListAdapter<DayCell, WeekPageAdapter.DayCellViewHolder> {
     private final OnDayCellClickListener listener;
     private final DayCellsProvider provider;
+
     private static final DiffUtil.ItemCallback<DayCell> DIFF_CALLBACK = new DiffUtil.ItemCallback<DayCell>() {
         @Override
         //compare the id of the object (date)
@@ -33,15 +32,15 @@ public class MonthPageAdapter extends ListAdapter<DayCell, MonthPageAdapter.DayC
             return oldItem.equals(newItem);
         }
     };
-    public MonthPageAdapter(OnDayCellClickListener litsener, DayCellsProvider provider) {
+
+    public WeekPageAdapter(OnDayCellClickListener listener, DayCellsProvider provider) {
         super(DIFF_CALLBACK);
-        this.listener = litsener;
+        this.listener = listener;
         this.provider = provider;
     }
 
     @NonNull
     @Override
-    //create a new view holder and return it
     public DayCellViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         ItemDaycellBinding binding = ItemDaycellBinding.inflate(
                 LayoutInflater.from(parent.getContext()),
@@ -51,7 +50,6 @@ public class MonthPageAdapter extends ListAdapter<DayCell, MonthPageAdapter.DayC
     }
 
     @Override
-    //bind and set data from the list to view holder
     public void onBindViewHolder(@NonNull DayCellViewHolder holder, int position) {
         DayCell dayData = getItem(position);
         holder.binding.DayTv.setText(String.valueOf(dayData.date().getDayOfMonth()));
@@ -79,6 +77,7 @@ public class MonthPageAdapter extends ListAdapter<DayCell, MonthPageAdapter.DayC
                 dayData.isSelected() ? View.VISIBLE : View.GONE
         );
     }
+
 
     //define the view hold for the daycell
     static class DayCellViewHolder extends RecyclerView.ViewHolder {

@@ -12,9 +12,6 @@ import java.util.List;
 
 public class MonthViewViewModel extends ViewModel {
     // TODO: Implement the ViewModel
-    // The month currently displayed
-
-
     public MonthViewViewModel() {
     }
 

@@ -38,6 +38,11 @@ public class MainActivity extends AppCompatActivity {
         mainBinding.toolbar.setNavigationOnClickListener(v -> {
             mainBinding.drawerLayout.openDrawer(GravityCompat.START);
         });
+        //set settings bottom onclick listener
+        navHeaderBinding.settingsBtn.setOnClickListener(button -> {
+            Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+            startActivity(intent);
+        });
 
         /*binding.toolbar.setOnMenuItemClickListener(item -> {
             // Do something
@@ -47,11 +52,7 @@ public class MainActivity extends AppCompatActivity {
         setAppBarPadding();;
         setNavigation();
 
-        //set settings bottom onclick listener
-        navHeaderBinding.settingsBtn.setOnClickListener(button -> {
-            Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
-            startActivity(intent);
-        });
+
     }
 
     public void setAppBarPadding() {

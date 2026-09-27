@@ -17,9 +17,8 @@ import com.baiyu.mycalendar.ui.main.MainViewModel;
 
 import java.time.LocalDate;
 import java.time.YearMonth;
-import java.time.format.TextStyle;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
-import java.util.Locale;
 
 public class MonthViewFragment extends Fragment {
 
@@ -68,10 +67,16 @@ public class MonthViewFragment extends Fragment {
         binding.monthVp2.registerOnPageChangeCallback(
                 new ViewPager2.OnPageChangeCallback() {
                     @Override
+                    //the onPageSelected() will be called by swipe, setCurrentItem
                     public void onPageSelected(int position) {
                         super.onPageSelected(position);
                         YearMonth month = YearMonth.now().plusMonths(position - 1000);
-                        mainViewModel.getDisplayedMonth().setValue(month);
+                        //prevent that weekView change the month and reactive the callback to change selected date
+                        YearMonth currentMonth = YearMonth.from(mainViewModel.getSelectedDate().getValue());
+                        if (currentMonth != null && currentMonth.equals(month)) {
+                            return;
+                        }
+                        mainViewModel.getSelectedDate().setValue(month.atDay(1));
                     }
                 }
         );
@@ -79,9 +84,17 @@ public class MonthViewFragment extends Fragment {
         mainViewModel.getSelectedDate().observe(getViewLifecycleOwner(), newDate ->
         {
             pagerAdapter.updateSelectedDate(newDate);
-        });
-        mainViewModel.getDisplayedMonth().observe(getViewLifecycleOwner(), newMonth -> {
-            String month = newMonth.getMonth().getDisplayName(TextStyle.FULL, Locale.getDefault());
+            //change the page to the selected date
+            YearMonth targetMonth = YearMonth.from(newDate);
+            int position = (int) ChronoUnit.MONTHS.between(
+                    YearMonth.now(),
+                    targetMonth
+            ) + 1000;
+            if (binding.monthVp2.getCurrentItem() != position) {
+                binding.monthVp2.setCurrentItem(position, false);
+            }
+            //change the textView
+            String month = newDate.getMonth().toString();
             binding.textView.setText(month);
         });
     }

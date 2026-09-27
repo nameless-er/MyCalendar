@@ -18,10 +18,5 @@
             android:checkable="true"
             android:icon="@drawable/ic_oui_calendar_week"
             android:title="@string/week_title" />
-        <item
-            android:id="@+id/dayViewFragment"
-            android:checkable="true"
-            android:icon="@drawable/ic_oui_calendar_day"
-            android:title="@string/day_title" />
     </group>
 </menu>
