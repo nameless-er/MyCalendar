@@ -18,6 +18,8 @@ import com.baiyu.mycalendar.databinding.ActivityMainBinding;
 import com.baiyu.mycalendar.databinding.NavHeaderBinding;
 import com.baiyu.mycalendar.ui.settings.SettingsActivity;
 
+import java.time.LocalDate;
+
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding mainBinding;
     private NavHeaderBinding navHeaderBinding;
@@ -43,15 +45,27 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
             startActivity(intent);
         });
-
+        //set toolbar menu onclick listener
+        mainBinding.toolbar.setOnMenuItemClickListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.today){
+                mainViewModel.getSelectedDate().setValue(LocalDate.now());
+            }
+            return true;
+        });
         /*binding.toolbar.setOnMenuItemClickListener(item -> {
             // Do something
             return item.getItemId() == R.id.account;
         })*/
 
+        //set observer
+        mainViewModel.getSelectedDate().observe(this, newDate ->
+        {
+            String month = newDate.getYear() == LocalDate.now().getYear() ? newDate.getMonth().toString() : newDate.getMonth().toString() + " " + newDate.getYear();
+            mainBinding.toolbar.setTitle(month);
+        });
         setAppBarPadding();;
         setNavigation();
-
 
     }
 

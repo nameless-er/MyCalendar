@@ -100,9 +100,6 @@ public class WeekViewFragment extends Fragment {
             if (binding.weekVp2.getCurrentItem() != position) {
                 binding.weekVp2.setCurrentItem(position, false);
             }
-            //change the textView
-            String month = newDate.getMonth().toString();
-            binding.textView.setText(month);
         });
 
     }

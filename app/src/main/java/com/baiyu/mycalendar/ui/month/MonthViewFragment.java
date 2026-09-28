@@ -93,9 +93,6 @@ public class MonthViewFragment extends Fragment {
             if (binding.monthVp2.getCurrentItem() != position) {
                 binding.monthVp2.setCurrentItem(position, false);
             }
-            //change the textView
-            String month = newDate.getMonth().toString();
-            binding.textView.setText(month);
         });
     }
 

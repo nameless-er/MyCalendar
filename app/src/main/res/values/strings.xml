@@ -9,7 +9,6 @@
     <string name="day_title">Day</string>
 
     <!-- Hints -->
-    <string name="searchbar_hint">What do u want to search for?</string>
 
     <!-- Button Descriptions -->
     <string name="btnSettings_description">Setting</string>

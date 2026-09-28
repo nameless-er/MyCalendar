@@ -31,19 +31,10 @@
                 app:menu="@menu/toolbar_menu"
                 app:navigationIcon="@drawable/baseline_menu_24"
                 app:navigationIconTint="?attr/colorOnSurface"
-                app:title=""
-                app:titleCentered="false">
+                app:titleCentered="true"
+                app:titleTextAppearance="@style/ToolbarTitleStyle" />
 
 
-                <com.google.android.material.search.SearchBar
-                    android:id="@+id/search_bar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:hint="@string/searchbar_hint" />
-
-            </com.google.android.material.appbar.MaterialToolbar>
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.fragment.app.FragmentContainerView
