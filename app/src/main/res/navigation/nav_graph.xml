@@ -8,7 +8,11 @@
         android:id="@+id/yearViewFragment"
         android:name="com.baiyu.mycalendar.ui.year.YearViewFragment"
         android:label="fragment_year_view"
-        tools:layout="@layout/fragment_year_view" />
+        tools:layout="@layout/fragment_year_view" >
+        <action
+            android:id="@+id/action_yearViewFragment_to_monthViewFragment"
+            app:destination="@id/monthViewFragment" />
+    </fragment>
     <fragment
         android:id="@+id/monthViewFragment"
         android:name="com.baiyu.mycalendar.ui.month.MonthViewFragment"

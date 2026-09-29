@@ -1,25 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    style="bold"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_centerHorizontal="false"
-    android:orientation="vertical">
+    android:layout_height="170dp"
+    android:layout_margin="1.5dp">
 
+    <TextView
+        android:id="@+id/month_tv"
+        android:layout_width="34dp"
+        android:layout_height="22dp"
+        android:layout_margin="2dp"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:text=""
+        android:textColor="?android:attr/textColorPrimary"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
         android:layout_marginBottom="4dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@id/month_vp2"
+        app:layout_constraintBottom_toTopOf="@id/days_grid"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/month_tv">
 
         <TextView
             android:layout_width="0dp"
@@ -27,7 +39,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/Monday"
-            android:textSize="10sp"
+            android:textSize="8sp"
             android:textStyle="bold" />
 
         <TextView
@@ -36,7 +48,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/Tuesday"
-            android:textSize="10sp"
+            android:textSize="8sp"
             android:textStyle="bold" />
 
         <TextView
@@ -45,7 +57,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/Wednesday"
-            android:textSize="10sp"
+            android:textSize="8sp"
             android:textStyle="bold" />
 
         <TextView
@@ -54,7 +66,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/Thursday"
-            android:textSize="10sp"
+            android:textSize="8sp"
             android:textStyle="bold" />
 
         <TextView
@@ -63,7 +75,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/Friday"
-            android:textSize="10sp"
+            android:textSize="8sp"
             android:textStyle="bold" />
 
         <TextView
@@ -72,7 +84,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/Saturday"
-            android:textSize="10sp"
+            android:textSize="8sp"
             android:textStyle="bold" />
 
         <TextView
@@ -81,28 +93,24 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/Sunday"
-            android:textSize="10sp"
+            android:textSize="8sp"
             android:textStyle="bold" />
 
     </LinearLayout>
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/month_vp2"
-        android:layout_width="0dp"
+    <GridLayout
+        android:id="@+id/days_grid"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/events_vp2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/events_vp2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:alignmentMode="alignMargins"
+        android:columnCount="7"
+        android:rowCount="6"
+        android:useDefaultMargins="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/month_vp2" />
+        app:layout_constraintTop_toBottomOf="@id/linearLayout" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

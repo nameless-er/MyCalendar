@@ -19,7 +19,6 @@ public class MonthPageAdapter extends ListAdapter<DayCell, MonthPageAdapter.DayC
     //the list is in ListAdapter, use getItem()
     //the setData() is in ListAdapter namely submitList()
     private final OnDayCellClickListener listener;
-    private final DayCellsProvider provider;
     private static final DiffUtil.ItemCallback<DayCell> DIFF_CALLBACK = new DiffUtil.ItemCallback<DayCell>() {
         @Override
         //compare the id of the object (date)
@@ -33,10 +32,9 @@ public class MonthPageAdapter extends ListAdapter<DayCell, MonthPageAdapter.DayC
             return oldItem.equals(newItem);
         }
     };
-    public MonthPageAdapter(OnDayCellClickListener litsener, DayCellsProvider provider) {
+    public MonthPageAdapter(OnDayCellClickListener listener) {
         super(DIFF_CALLBACK);
-        this.listener = litsener;
-        this.provider = provider;
+        this.listener = listener;
     }
 
     @NonNull
@@ -54,26 +52,26 @@ public class MonthPageAdapter extends ListAdapter<DayCell, MonthPageAdapter.DayC
     //bind and set data from the list to view holder
     public void onBindViewHolder(@NonNull DayCellViewHolder holder, int position) {
         DayCell dayData = getItem(position);
-        holder.binding.DayTv.setText(String.valueOf(dayData.date().getDayOfMonth()));
+        holder.binding.dayTv.setText(String.valueOf(dayData.date().getDayOfMonth()));
         //change the selected date
         holder.itemView.setOnClickListener(v -> { listener.onDayCellClick(dayData);
         });
         //must have else to update the view holder
         if (dayData.isDisplayedMonth()) {
             holder.itemView.setBackgroundResource(R.drawable.background_daycell_displayed_month);
-            holder.binding.DayTv.setAlpha(1);
+            holder.binding.dayTv.setAlpha(1);
         }
         else {
             holder.itemView.setBackgroundResource(R.drawable.background_daycell_not_displayed_month);
-            holder.binding.DayTv.setAlpha(0.5f);
+            holder.binding.dayTv.setAlpha(0.5f);
         }
         if(dayData.isToday()){
-            holder.binding.DayTv.setBackgroundResource(R.drawable.background_text_today);
-            holder.binding.DayTv.setTextColor(0xFF000000);
+            holder.binding.dayTv.setBackgroundResource(R.drawable.background_text_today);
+            holder.binding.dayTv.setTextColor(0xFF000000);
         }
         else {
-            holder.binding.DayTv.setBackground(null);
-            holder.binding.DayTv.setTextColor(holder.defaultTextColor);
+            holder.binding.dayTv.setBackground(null);
+            holder.binding.dayTv.setTextColor(holder.defaultTextColor);
         }
         holder.binding.selectionFrame.setVisibility(
                 dayData.isSelected() ? View.VISIBLE : View.GONE
@@ -89,7 +87,7 @@ public class MonthPageAdapter extends ListAdapter<DayCell, MonthPageAdapter.DayC
             //set viewItem
             super(binding.getRoot());
             this.binding = binding;
-            defaultTextColor = binding.DayTv.getTextColors();
+            defaultTextColor = binding.dayTv.getTextColors();
         }
     }
 }

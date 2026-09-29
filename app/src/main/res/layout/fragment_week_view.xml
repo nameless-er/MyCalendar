@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="M"
+            android:text="@string/Monday"
             android:textSize="10sp"
             android:textStyle="bold" />
 
@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="T"
+            android:text="@string/Tuesday"
             android:textSize="10sp"
             android:textStyle="bold" />
 
@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="W"
+            android:text="@string/Wednesday"
             android:textSize="10sp"
             android:textStyle="bold" />
 
@@ -53,7 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="T"
+            android:text="@string/Thursday"
             android:textSize="10sp"
             android:textStyle="bold" />
 
@@ -62,7 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="F"
+            android:text="@string/Friday"
             android:textSize="10sp"
             android:textStyle="bold" />
 
@@ -71,7 +71,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="S"
+            android:text="@string/Saturday"
             android:textSize="10sp"
             android:textStyle="bold" />
 
@@ -80,7 +80,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="S"
+            android:text="@string/Sunday"
             android:textSize="10sp"
             android:textStyle="bold" />
 

@@ -70,13 +70,13 @@ public class MonthViewFragment extends Fragment {
                     //the onPageSelected() will be called by swipe, setCurrentItem
                     public void onPageSelected(int position) {
                         super.onPageSelected(position);
-                        YearMonth month = YearMonth.now().plusMonths(position - 1000);
+                        YearMonth monthOfPage = YearMonth.now().plusMonths(position - 1000);
                         //prevent that weekView change the month and reactive the callback to change selected date
                         YearMonth currentMonth = YearMonth.from(mainViewModel.getSelectedDate().getValue());
-                        if (currentMonth != null && currentMonth.equals(month)) {
+                        if (currentMonth.equals(monthOfPage)) {
                             return;
                         }
-                        mainViewModel.getSelectedDate().setValue(month.atDay(1));
+                        mainViewModel.getSelectedDate().setValue(monthOfPage.atDay(1));
                     }
                 }
         );

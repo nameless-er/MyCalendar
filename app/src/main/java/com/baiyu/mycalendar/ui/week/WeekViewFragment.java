@@ -68,7 +68,7 @@ public class WeekViewFragment extends Fragment {
                     @Override
                     public void onPageSelected(int position) {
                         super.onPageSelected(position);
-                        LocalDate monday = LocalDate.now()
+                        LocalDate mondayOfPage = LocalDate.now()
                                 .with(DayOfWeek.MONDAY)
                                 .plusWeeks(position - 1000);
 
@@ -80,11 +80,11 @@ public class WeekViewFragment extends Fragment {
 
                         LocalDate currentMonday = selectedDate.with(DayOfWeek.MONDAY);
 
-                        if (currentMonday.equals(monday)) {
+                        if (currentMonday.equals(mondayOfPage)) {
                             return;
                         }
                         DayOfWeek dow = selectedDate.getDayOfWeek();
-                        mainViewModel.getSelectedDate().setValue(monday.with(dow));
+                        mainViewModel.getSelectedDate().setValue(mondayOfPage.with(dow));
                     }
                 }
         );

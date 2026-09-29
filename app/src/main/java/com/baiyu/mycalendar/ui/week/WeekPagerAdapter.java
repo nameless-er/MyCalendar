@@ -53,7 +53,7 @@ public class WeekPagerAdapter extends RecyclerView.Adapter<WeekPagerAdapter.Page
             dayCellsByMonday.put(monday, dayCells);
         }
         //create the adapter for this week's RecyclerView
-        WeekPageAdapter pageAdapter = new WeekPageAdapter(listener, provider);
+        WeekPageAdapter pageAdapter = new WeekPageAdapter(listener);
         adaptersByMonday.put(monday, pageAdapter);
         holder.binding.datesRv.setAdapter(pageAdapter);
         pageAdapter.submitList(dayCells);

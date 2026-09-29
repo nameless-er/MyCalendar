@@ -52,7 +52,7 @@ public class MonthPagerAdapter extends RecyclerView.Adapter<MonthPagerAdapter.Pa
             dayCellsByMonth.put(month, dayCells);
         }
         //create the adapter for this month's RecyclerView
-        MonthPageAdapter pageAdapter = new MonthPageAdapter(listener, provider);
+        MonthPageAdapter pageAdapter = new MonthPageAdapter(listener);
         adaptersByMonth.put(month, pageAdapter);
         holder.binding.datesRv.setAdapter(pageAdapter);
         pageAdapter.submitList(dayCells);
@@ -76,7 +76,7 @@ public class MonthPagerAdapter extends RecyclerView.Adapter<MonthPagerAdapter.Pa
     }
 
     //viewHolder for a month page
-    class PageViewHolder extends RecyclerView.ViewHolder{
+    static class PageViewHolder extends RecyclerView.ViewHolder{
         ItemMonthPageBinding binding;
         YearMonth month;
 
