@@ -109,20 +109,10 @@ public class MainActivity extends AppCompatActivity {
         navController =
                 navHostFragment.getNavController();
         //set navigation item select listener
-        mainBinding.navigationView.setNavigationItemSelectedListener(item -> {
-
-            boolean handled = NavigationUI
-                    .onNavDestinationSelected(
-                            item,
-                            navController
-                    );
-            //closer drawer
-            if (handled) {
-                mainBinding.drawerLayout.closeDrawer(GravityCompat.START);
-            }
-
-            return handled;
-        });
+        NavigationUI.setupWithNavController(
+                mainBinding.navigationView,
+                navController
+        );
         //set on destination changed listener
         navController.addOnDestinationChangedListener(
                 (controller, destination, arguments) -> {

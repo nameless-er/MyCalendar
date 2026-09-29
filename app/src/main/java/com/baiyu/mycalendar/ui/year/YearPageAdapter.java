@@ -55,7 +55,14 @@ public class YearPageAdapter extends RecyclerView.Adapter<YearPageAdapter.MonthC
             holder.binding.monthTv.setTextColor(holder.defaultTextColor);
         }
         //set onclick listener
-        holder.itemView.setOnClickListener(v -> listener.onMonthCellClick(month));
+        holder.itemView.setOnClickListener(v -> {
+            //add delay to show on click effect
+            v.setEnabled(false);
+            v.postDelayed(() -> {
+                listener.onMonthCellClick(month);//code for the event
+                v.setEnabled(true);
+            }, 100);
+        });
         //fill the grid with text view
         GridLayout grid = holder.binding.daysGrid;
         grid.removeAllViews();
@@ -78,13 +85,17 @@ public class YearPageAdapter extends RecyclerView.Adapter<YearPageAdapter.MonthC
             if (date != null) {
                 dayTv.setText(String.valueOf(date.getDayOfMonth()));
                 dayTv.setBackgroundResource(R.drawable.background_daycell_displayed_month);
+                dayTv.setTextColor(holder.defaultTextColor);
+                if (date.equals(LocalDate.now())){//today
+                    dayTv.setBackgroundResource(R.drawable.background_text_today);
+                    dayTv.setTextColor(0xFF000000);
+                }
             }
-            else{
+            else {
                 dayTv.setBackground(null);
                 dayTv.setTextColor(holder.defaultTextColor);
             }
             grid.addView(dayTv);
-
         }
 
     }
