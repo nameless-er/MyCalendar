@@ -61,8 +61,23 @@ public class MainActivity extends AppCompatActivity {
         //set observer
         mainViewModel.getSelectedDate().observe(this, newDate ->
         {
-            String month = newDate.getYear() == LocalDate.now().getYear() ? newDate.getMonth().toString() : newDate.getMonth().toString() + " " + newDate.getYear();
-            mainBinding.toolbar.setTitle(month);
+            //change the title based on current page
+            if (navController.getCurrentDestination() == null) {
+                return;
+            }
+            int destinationId = navController.getCurrentDestination().getId();
+            if (destinationId == R.id.yearViewFragment) {
+
+                mainBinding.toolbar.setTitle(
+                        String.valueOf(newDate.getYear())
+                );
+
+            }
+            else {
+                String month = newDate.getYear() == LocalDate.now().getYear() ? newDate.getMonth().toString() : newDate.getMonth().toString() + " " + newDate.getYear();
+                mainBinding.toolbar.setTitle(month);
+            }
+
         });
         setAppBarPadding();;
         setNavigation();
@@ -108,5 +123,27 @@ public class MainActivity extends AppCompatActivity {
 
             return handled;
         });
+        //set on destination changed listener
+        navController.addOnDestinationChangedListener(
+                (controller, destination, arguments) -> {
+                    //change title when switching pages
+                    LocalDate date = mainViewModel.getSelectedDate().getValue();
+                    if (date == null) {
+                        return;
+                    }
+                    if (destination.getId() == R.id.yearViewFragment) {
+                        mainBinding.toolbar.setTitle(
+                                String.valueOf(date.getYear())
+                        );
+                    }
+                    else {
+                        String month = date.getYear() == LocalDate.now().getYear()
+                                ? date.getMonth().toString()
+                                : date.getMonth().toString() + " " + date.getYear();
+
+                        mainBinding.toolbar.setTitle(month);
+                    }
+                }
+        );
     }
 }

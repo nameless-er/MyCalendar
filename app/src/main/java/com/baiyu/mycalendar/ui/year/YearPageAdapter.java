@@ -79,6 +79,10 @@ public class YearPageAdapter extends RecyclerView.Adapter<YearPageAdapter.MonthC
                 dayTv.setText(String.valueOf(date.getDayOfMonth()));
                 dayTv.setBackgroundResource(R.drawable.background_daycell_displayed_month);
             }
+            else{
+                dayTv.setBackground(null);
+                dayTv.setTextColor(holder.defaultTextColor);
+            }
             grid.addView(dayTv);
 
         }
